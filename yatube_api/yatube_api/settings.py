@@ -1,11 +1,10 @@
 import os
 
-from dotenv import load_dotenv
+from .secrets import SECRET
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-load_dotenv()
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = SECRET
 
 DEBUG = True
 
