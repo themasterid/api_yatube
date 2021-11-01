@@ -1,9 +1,11 @@
 import os
 
+from dotenv import load_dotenv
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(f'{BASE_DIR}\\secret_settings.txt') as f:
-    SECRET_KEY = f.read().strip()
+load_dotenv()
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 DEBUG = True
 
