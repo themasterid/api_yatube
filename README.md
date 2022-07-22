@@ -157,12 +157,12 @@ tests/test_auth.py::TestAuthAPI::test_settings PASSED                           
 Запускаем проект:
 
 ```bash
-python yatube/manage.py runserver localhost:80
+python yatube_api/manage.py runserver localhost:80
 ```
 
 После чего проект будет доступен по адресу http://localhost/
 
-Заходим в http://localhost/admin и создаем группы и записи.
-После чего записи и группы появятся на главной странице.
+Заходим в http://localhost/admin и создаем посты, группы, комментарии.
+Тестировать и добавлять данные удобно посkе прохождения авторизации через Postman.
 
 Автор: [Дмитрий Клепиков](https://github.com/themasterid) :+1:
