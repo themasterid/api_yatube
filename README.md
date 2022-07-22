@@ -1,5 +1,1 @@
-# api_yatube
-api_yatube
-
-
-Редавктировать
+# api_yatube - CRUD для Yatube, спринта 8 в Яндекс.Практикум
