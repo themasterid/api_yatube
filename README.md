@@ -2,35 +2,28 @@
 
 ## Спринт 8 - Сообщества создание записей
 
-### hw03_forms - CRUD для Yatube
+### api_yatube - CRUD для Yatube
 
-Добавлены следующие возможности:
-- регистрация пользователя, 
-- вход/выход пользователя,
-- восстановления пароля,
-- создания записей сообщества,
-- подробная информация, редактирование только своей записи,
-- отображение постов пользователя,
-- пагинация, раздел Об авторе, Технологии, отображения профиля пользователя.
+Описание
 
 ### Настройка и запуск на ПК
 
 Клонируем проект:
 
 ```bash
-git clone https://github.com/themasterid/hw03_forms.git
+git clone https://github.com/themasterid/api_yatube.git
 ```
 
 или
 
 ```bash
-git clone git@github.com:themasterid/hw03_forms.git
+git clone git@github.com:themasterid/api_yatube.git
 ```
 
 Переходим в папку с проектом:
 
 ```bash
-cd hw03_forms
+cd api_yatube
 ```
 
 Устанавливаем виртуальное окружение:
@@ -62,22 +55,22 @@ pip install -r requirements.txt
 Применяем миграции:
 
 ```bash
-python yatube/manage.py makemigrations
+python yatube_api/manage.py makemigrations
 ```
 ```bash
-python yatube/manage.py migrate
+python yatube_api/manage.py migrate
 ```
 
 Создаем супер пользователя:
 
 ```bash
-python yatube/manage.py createsuperuser
+python yatube_api/manage.py createsuperuser
 ```
 
 При желании делаем коллекцию статики:
 
 ```bash
-python yatube/manage.py collectstatic
+python yatube_api/manage.py collectstatic
 ```
 
 Предварительно сняв комментарий с:
