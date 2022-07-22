@@ -4,7 +4,14 @@
 
 ### api_yatube - CRUD для Yatube
 
-Описание
+Для взаимодействия с ресурсами опишите и настройте такие эндпоинты:
+- api/v1/api-token-auth/ (POST): передаём логин и пароль, получаем токен.
+- api/v1/posts/ (GET, POST): получаем список всех постов или создаём новый пост.
+- api/v1/posts/{post_id}/ (GET, PUT, PATCH, DELETE): получаем, редактируем или удаляем пост по id.
+- api/v1/groups/ (GET): получаем список всех групп.
+- api/v1/groups/{group_id}/ (GET): получаем информацию о группе по id.
+- api/v1/posts/{post_id}/comments/ (GET, POST): получаем список всех комментариев поста с id=post_id или создаём новый, указав id поста, который хотим прокомментировать.
+- api/v1/posts/{post_id}/comments/{comment_id}/ (GET, PUT, PATCH, DELETE): получаем, редактируем или удаляем комментарий по id у поста с id=post_id.
 
 ### Настройка и запуск на ПК
 
@@ -109,38 +116,42 @@ pytest
 Получим:
 
 ```bash
-
 pytest
+======================================= test session starts =======================================
+platform win32 -- Python 3.10.5, pytest-6.2.4, py-1.11.0, pluggy-0.13.1 -- ...\api_yatube\venv\Scripts\python.exe
+django: settings: yatube_api.settings (from ini)
+rootdir: ...\api_yatube, configfile: pytest.ini, testpaths: tests/
+plugins: django-4.4.0, pythonpath-0.7.3
+collected 26 items
 
-====================================================== test session starts =======================================================
-platform win32 -- Python 3.9.7, pytest-6.2.5, py-1.10.0, pluggy-0.13.1 -- ...hw03_forms\venv\Scripts\python.exe
-django: settings: yatube.settings (from ini)
-rootdir: ...\hw03_forms, configfile: pytest.ini, testpaths: tests/
-plugins: Faker-12.0.0, django-3.8.0, pythonpath-0.7.3
-collected 20 items
+tests/test_auth.py::TestAuthAPI::test_auth PASSED                                            [  3%]
+tests/test_comment.py::TestPostAPI::test_comments_not_found PASSED                           [  7%]
+tests/test_comment.py::TestPostAPI::test_comments_get_unauth PASSED                          [ 11%]
+tests/test_comment.py::TestPostAPI::test_comments_get PASSED                                 [ 15%]
+tests/test_comment.py::TestPostAPI::test_comments_create PASSED                              [ 19%]
+tests/test_comment.py::TestPostAPI::test_post_unauth_get_current PASSED                      [ 23%]
+tests/test_comment.py::TestPostAPI::test_post_get_current PASSED                             [ 26%]
+tests/test_comment.py::TestPostAPI::test_post_patch_current PASSED                           [ 30%]
+tests/test_comment.py::TestPostAPI::test_post_unauth_patch_current PASSED                    [ 34%]
+tests/test_comment.py::TestPostAPI::test_post_delete_current PASSED                          [ 38%]
+tests/test_comment.py::TestPostAPI::test_post_unauth_delete_current PASSED                   [ 42%]
+tests/test_group.py::TestGroupAPI::test_group_not_found PASSED                               [ 46%]
+tests/test_group.py::TestGroupAPI::test_group_not_auth PASSED                                [ 50%]
+tests/test_group.py::TestGroupAPI::test_group_auth_get PASSED                                [ 53%]
+tests/test_group.py::TestGroupAPI::test_group_create PASSED                                  [ 57%]
+tests/test_group.py::TestGroupAPI::test_group_get_post PASSED                                [ 61%]
+tests/test_post.py::TestPostAPI::test_post_not_found PASSED                                  [ 65%]
+tests/test_post.py::TestPostAPI::test_post_not_auth PASSED                                   [ 69%]
+tests/test_post.py::TestPostAPI::test_posts_auth_get PASSED                                  [ 73%]
+tests/test_post.py::TestPostAPI::test_post_auth_create PASSED                                [ 76%]
+tests/test_post.py::TestPostAPI::test_post_unauth_create PASSED                              [ 80%]
+tests/test_post.py::TestPostAPI::test_post_get_current PASSED                                [ 84%]
+tests/test_post.py::TestPostAPI::test_post_patch_current PASSED                              [ 88%]
+tests/test_post.py::TestPostAPI::test_post_auth_delete_current PASSED                        [ 92%]
+tests/test_post.py::TestPostAPI::test_post_unauth_delete_current PASSED                      [ 96%]
+tests/test_auth.py::TestAuthAPI::test_settings PASSED                                        [100%] 
 
-tests/test_paginator.py::TestGroupPaginatorView::test_group_paginator_view_get PASSED                                       [  5%]
-tests/test_paginator.py::TestGroupPaginatorView::test_group_paginator_not_in_context_view PASSED                            [ 10%]
-tests/test_paginator.py::TestGroupPaginatorView::test_index_paginator_not_in_view_context PASSED                            [ 15%]
-tests/test_paginator.py::TestGroupPaginatorView::test_index_paginator_view PASSED                                           [ 20%]
-tests/test_paginator.py::TestGroupPaginatorView::test_profile_paginator_view PASSED                                         [ 25%]
-tests/test_about.py::TestTemplateView::test_about_author_tech PASSED                                                        [ 30%]
-tests/test_auth_urls.py::TestAuthUrls::test_auth_urls PASSED                                                                [ 35%]
-tests/test_create.py::TestCreateView::test_create_view_get PASSED                                                           [ 40%]
-tests/test_create.py::TestCreateView::test_create_view_post PASSED                                                          [ 45%]
-tests/test_homework.py::TestPost::test_post_create PASSED                                                                   [ 50%]
-tests/test_homework.py::TestGroup::test_group_create PASSED                                                                 [ 55%]
-tests/test_homework.py::TestGroupView::test_group_view PASSED                                                               [ 60%]
-tests/test_post.py::TestPostView::test_post_view_get PASSED                                                                 [ 65%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_get PASSED                                                        [ 70%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_author_get PASSED                                                 [ 75%]
-tests/test_post.py::TestPostEditView::test_post_edit_view_author_post PASSED                                                [ 80%]
-tests/test_profile.py::TestProfileView::test_profile_view_get PASSED                                                        [ 85%]
-tests/test_homework.py::TestPost::test_post_model PASSED                                                                    [ 90%]
-tests/test_homework.py::TestPost::test_post_admin PASSED                                                                    [ 95%]
-tests/test_homework.py::TestGroup::test_group_model PASSED                                                                  [100%]
-
-======================================================= 20 passed in 1.96s =======================================================
+======================================== warnings summary =========================================
 ```
 
 Запускаем проект:
