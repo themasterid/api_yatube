@@ -6,5 +6,5 @@ pytest-pythonpath==0.7.3
 Pillow==10.3.0
 requests==2.32.2
 sorl-thumbnail==12.7.0
-djoser==2.1.0
+djoser==2.3.0
 django-environ==0.8.1
